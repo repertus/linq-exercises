@@ -55,12 +55,12 @@ namespace LinqExercises.Test.Controllers
         {
             // ACT
             IHttpActionResult actionResult = _customersController.GetCustomersThatShipWith("Speedy Express");
-            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<Customer>>;
+            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<IGrouping<string, Order>>>;
 
             // ASSERT
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(contentResult.Content.Count(), 9);
+            Assert.AreEqual(contentResult.Content.Count(), 78);
         }
 
         [TestMethod]
